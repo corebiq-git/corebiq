@@ -1,0 +1,66 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    function hasPermission(module) {
+      return isAdmin()
+        || (signedIn()
+          && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+          && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.permissions[module] == true);
+    }
+
+    match /users/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin());
+      allow create, update, delete: if isAdmin();
+    }
+
+    match /packages/{id} {
+      allow read, write: if hasPermission("packages");
+    }
+    match /bookings/{id} {
+      allow read, write: if hasPermission("bookings");
+    }
+    match /customers/{id} {
+      allow read, write: if hasPermission("customers");
+    }
+    match /crm/{id} {
+      allow read, write: if hasPermission("crm");
+    }
+    match /drivers/{id} {
+      allow read, write: if hasPermission("drivers");
+    }
+    match /expenses/{id} {
+      allow read, write: if hasPermission("expenses");
+    }
+    match /documents/{id} {
+      allow read, write: if hasPermission("documents");
+    }
+    match /vendors/{id} {
+      allow read, write: if hasPermission("erp");
+    }
+    match /payments/{id} {
+      allow read, write: if hasPermission("erp");
+    }
+    match /operations/{id} {
+      allow read, write: if hasPermission("operations");
+    }
+
+    match /serviceCatalog/{id} {
+      allow read: if signedIn();
+      allow write: if isAdmin();
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

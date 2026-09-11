@@ -1,0 +1,10 @@
+{
+  "firestore":{"rules":"firestore.rules"},
+  "storage":{"rules":"storage.rules"},
+  "hosting":{
+    "public":".",
+    "ignore":["firebase.json","**/.*","**/node_modules/**","functions/**"],
+    "rewrites":[{"source":"/api/createStaff","function":{"functionId":"createStaff","region":"us-central1"}}]
+  },
+  "functions":{"source":"functions"}
+}

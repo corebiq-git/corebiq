@@ -1,0 +1,16 @@
+{
+  "name": "Travells Packages Admin",
+  "short_name": "Travells Admin",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f6f7f8",
+  "theme_color": "#d71916",
+  "icons": [
+    {
+      "src": "assets/logo.jpg",
+      "sizes": "1381x1536",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}

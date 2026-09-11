@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#d71916">
+<meta name="description" content="Travells and Your Packages responsive travel management admin app.">
+<link rel="icon" href="assets/logo.jpg">
+<link rel="manifest" href="manifest.json">
+<title>Travells • Packages Admin</title>
+<link rel="stylesheet" href="styles.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+<div id="authView" class="auth">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <img src="assets/logo.jpg" alt="Travells logo">
+      <h1>Travells Admin</h1>
+      <p>Travel operations &amp; package management</p>
+    </div>
+    <div id="authAlert" class="alert"></div>
+    <form id="loginForm" class="form-grid" style="grid-template-columns:1fr">
+      <div class="field"><label>Email</label><input id="loginEmail" type="email" autocomplete="email" required placeholder="admin@example.com"></div>
+      <div class="field"><label>Password</label><input id="loginPassword" type="password" autocomplete="current-password" required placeholder="••••••••"></div>
+      <button class="btn primary" type="submit" style="justify-content:center;padding:12px"><i data-lucide="log-in"></i> Sign in</button>
+    </form>
+    <div class="footer-note">Firebase Authentication • Firestore • Storage</div>
+  </div>
+</div>
+
+<div id="appView" class="app" style="display:none">
+  <aside id="sidebar" class="sidebar">
+    <a class="brand" href="#" data-page="dashboard">
+      <img src="assets/logo.jpg" alt="Travells">
+      <span><b>Travells</b><small>Packages Admin</small></span>
+    </a>
+    <nav class="nav">
+      <div class="nav-label">Overview</div>
+      <button data-page="dashboard" class="active"><i data-lucide="layout-dashboard"></i> Dashboard</button>
+      <div class="nav-label">Travel</div>
+      <button data-page="packages"><i data-lucide="map"></i> Packages</button>
+      <button data-page="bookings"><i data-lucide="calendar-check-2"></i> Bookings</button>
+      <button data-page="customers"><i data-lucide="users"></i> Customers</button>
+      <button data-page="crm"><i data-lucide="funnel"></i> CRM &amp; Leads</button>
+      <button data-page="drivers"><i data-lucide="steering-wheel"></i> Drivers &amp; Vehicles</button>
+      <button data-page="expenses"><i data-lucide="wallet-cards"></i> Expenses</button>
+      <button data-page="documents"><i data-lucide="files"></i> Invoices &amp; Documents</button>
+      <button data-page="erp"><i data-lucide="landmark"></i> ERP &amp; Finance</button>
+      <button data-page="operations"><i data-lucide="route"></i> Operations</button>
+      <div class="nav-label">Access &amp; System</div>
+      <button data-page="staff"><i data-lucide="user-cog"></i> Staff &amp; Permissions</button>
+      <button data-page="backup"><i data-lucide="database-backup"></i> Backup &amp; Restore</button>
+      <button data-page="settings"><i data-lucide="settings-2"></i> Settings</button>
+      <div class="nav-label">Services</div>
+      <button data-page="service-catalog"><i data-lucide="layers-3"></i> Service Catalog</button>
+      <div class="nav-label">System</div>
+    </nav>
+    <div class="userbox">
+      <div class="user"><div id="avatar" class="avatar">A</div><div><strong id="userEmail">Admin</strong><span>Administrator</span></div></div>
+      <button id="logoutBtn" class="btn" style="width:100%;justify-content:center"><i data-lucide="log-out"></i> Sign out</button>
+    </div>
+  </aside>
+
+  <section class="main">
+    <header class="topbar">
+      <div class="top-left"><button id="mobileMenuBtn" class="mobile-menu" aria-label="Open navigation"><i data-lucide="menu"></i></button><div><h1 id="pageTitle">Dashboard</h1><p id="pageSubtitle">Travel business overview</p></div></div>
+      <div class="actions"><span id="connectionBadge" class="badge amber"><i data-lucide="cloud-off"></i> Checking…</span><button class="btn primary" data-open="packageModal"><i data-lucide="plus"></i> New package</button></div>
+    </header>
+
+    <main class="content">
+      <section id="page-dashboard" class="page active">
+        <div class="hero-card"><h2>Run your travel operations from one place.</h2><p>Manage packages, bookings, customers, drivers, vehicles, expenses and Firebase-backed backups from desktop or mobile.</p></div>
+        <div id="kpis" class="kpis"></div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="card"><div class="card-head"><div><h2>Package performance</h2><p>Current package inventory</p></div><button class="btn small" data-page="packages">View all</button></div><div id="packageChart" class="bar-chart"></div></div>
+          <div class="card"><div class="card-head"><div><h2>Recent bookings</h2><p>Latest customer activity</p></div><button class="btn small" data-page="bookings">View all</button></div><div id="recentBookings"></div></div>
+        </div>
+      </section>
+
+      <section id="page-packages" class="page">
+        <div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="packageSearch" placeholder="Search packages…"></div><div class="actions"><button class="btn" id="seedBtn"><i data-lucide="wand-2"></i> Seed demo</button><button class="btn primary" data-open="packageModal"><i data-lucide="plus"></i> Add package</button></div></div>
+        <div class="card"><div class="card-head"><div><h2>Travel packages</h2><p>Create, edit and archive your packages.</p></div></div><div class="table-wrap"><table><thead><tr><th>Package</th><th>Destination</th><th>Duration</th><th>Price</th><th>Status</th><th>Updated</th><th></th></tr></thead><tbody id="packagesTable"></tbody></table></div></div>
+      </section>
+
+      <section id="page-bookings" class="page">
+        <div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="bookingSearch" placeholder="Search bookings…"></div><button class="btn primary" data-open="bookingModal"><i data-lucide="plus"></i> Add booking</button></div>
+        <div class="card"><div class="card-head"><div><h2>Bookings</h2><p>Track reservations, customers and payment status.</p></div></div><div class="table-wrap"><table><thead><tr><th>Booking</th><th>Customer</th><th>Package</th><th>Travel date</th><th>Amount</th><th>Status</th><th></th></tr></thead><tbody id="bookingsTable"></tbody></table></div></div>
+      </section>
+
+      <section id="page-customers" class="page">
+        <div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="customerSearch" placeholder="Search customers…"></div><button class="btn primary" data-open="customerModal"><i data-lucide="plus"></i> Add customer</button></div>
+        <div class="card"><div class="card-head"><div><h2>Customers</h2><p>Central customer directory.</p></div></div><div class="table-wrap"><table><thead><tr><th>Name</th><th>Mobile</th><th>Email</th><th>City</th><th>Bookings</th><th></th></tr></thead><tbody id="customersTable"></tbody></table></div></div>
+      </section>
+
+      
+      <section id="page-crm" class="page">
+        <div class="hero-card"><h2>CRM — turn enquiries into bookings.</h2><p>Capture leads, track follow-ups, convert qualified enquiries into customers and connect the sales journey to bookings and documents.</p></div>
+        <div class="kpis" id="crmKpis"></div>
+        <div class="toolbar" style="margin-top:16px"><div class="search"><i data-lucide="search"></i><input id="leadSearch" placeholder="Search leads…"></div><button class="btn primary" data-open="leadModal"><i data-lucide="user-plus"></i> New lead</button></div>
+        <div class="card"><div class="card-head"><div><h2>Lead pipeline</h2><p>New → Contacted → Qualified → Quoted → Won / Lost</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Lead</th><th>Contact</th><th>Interest</th><th>Value</th><th>Stage</th><th>Follow-up</th><th>Owner</th><th></th></tr></thead><tbody id="leadsTable"></tbody></table></div>
+        </div>
+      </section>
+
+<section id="page-drivers" class="page">
+        <div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="driverSearch" placeholder="Search drivers or vehicles…"></div><button class="btn primary" data-open="driverModal"><i data-lucide="plus"></i> Add driver / vehicle</button></div>
+        <div class="card"><div class="card-head"><div><h2>Drivers &amp; Vehicles</h2><p>Assign transport resources to trips.</p></div></div><div class="table-wrap"><table><thead><tr><th>Driver</th><th>Mobile</th><th>Vehicle</th><th>Registration</th><th>Capacity</th><th>Status</th><th></th></tr></thead><tbody id="driversTable"></tbody></table></div></div>
+      </section>
+
+      
+      <section id="page-erp" class="page">
+        <div class="hero-card"><h2>ERP — money, suppliers &amp; profitability.</h2><p>Connect booking revenue, payments, expenses and supplier costs to understand outstanding amounts and booking-level profitability.</p></div>
+        <div class="kpis" id="erpKpis"></div>
+        <div class="grid-2" style="margin-top:16px">
+          <div class="card"><div class="card-head"><div><h2>Receivables</h2><p>Outstanding customer balances</p></div><button class="btn small" data-page="bookings">Bookings</button></div><div id="receivablesList"></div></div>
+          <div class="card"><div class="card-head"><div><h2>Profitability</h2><p>Revenue minus recorded expenses</p></div><button class="btn small" data-page="expenses">Expenses</button></div><div id="profitabilityList"></div></div>
+        </div>
+        <div class="toolbar" style="margin-top:16px"><div class="search"><i data-lucide="search"></i><input id="vendorSearch" placeholder="Search suppliers / vendors…"></div><button class="btn primary" data-open="vendorModal"><i data-lucide="plus"></i> Add supplier</button></div>
+        <div class="card"><div class="card-head"><div><h2>Suppliers &amp; vendors</h2><p>Hotels, transport providers, visa partners, guides and other business suppliers.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Supplier</th><th>Category</th><th>Contact</th><th>Currency</th><th>Payable</th><th>Status</th><th></th></tr></thead><tbody id="vendorsTable"></tbody></table></div>
+        </div>
+      </section>
+
+<section id="page-expenses" class="page">
+        <div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="expenseSearch" placeholder="Search expenses…"></div><button class="btn primary" data-open="expenseModal"><i data-lucide="plus"></i> Add expense</button></div>
+        <div class="card"><div class="card-head"><div><h2>Expenses</h2><p>Track travel and operating costs.</p></div></div><div class="table-wrap"><table><thead><tr><th>Date</th><th>Category</th><th>Description</th><th>Vendor</th><th>Amount</th><th></th></tr></thead><tbody id="expensesTable"></tbody></table></div></div>
+      </section>
+
+      
+      <section id="page-service-catalog" class="page">
+        <div class="hero-card">
+          <h2>Travel service catalog</h2>
+          <p>Organise the four core products you sell. Packages can use any service type and support INR or AED pricing.</p>
+        </div>
+        <div class="grid-2">
+          <div class="card"><div class="card-head"><div><h2>eVisa</h2><p>Visa application products and document workflows.</p></div><span class="badge red">Service</span></div><div class="actions"><span class="pill">INR</span><span class="pill">AED</span><span class="pill">Documents</span></div></div>
+          <div class="card"><div class="card-head"><div><h2>Umrah</h2><p>Umrah packages with dates, travellers, hotels and transport.</p></div><span class="badge red">Service</span></div><div class="actions"><span class="pill">Fixed</span><span class="pill">Custom</span><span class="pill">INR / AED</span></div></div>
+          <div class="card"><div class="card-head"><div><h2>Tour — Fixed Price</h2><p>Published tour packages with a defined per-person or group price.</p></div><span class="badge blue">Tour</span></div><div class="actions"><span class="pill">Fixed pricing</span><span class="pill">Published</span></div></div>
+          <div class="card"><div class="card-head"><div><h2>Tour — Custom Choose</h2><p>Build a quotation by selecting destinations, hotels, transport and add-ons.</p></div><span class="badge blue">Custom</span></div><div class="actions"><span class="pill">Quote</span><span class="pill">Add-ons</span><span class="pill">INR / AED</span></div></div>
+        </div>
+      </section>
+
+      <section id="page-staff" class="page">
+        <div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="staffSearch" placeholder="Search staff…"></div><button id="addStaffBtn" class="btn primary"><i data-lucide="user-plus"></i> Add staff</button></div>
+        <div class="card"><div class="card-head"><div><h2>Staff &amp; permissions</h2><p>Admin has full control. Each staff member can receive only the modules you enable.</p></div><span class="badge red">Admin only</span></div>
+          <div class="table-wrap"><table><thead><tr><th>Staff</th><th>Role</th><th>Modules</th><th>Status</th><th></th></tr></thead><tbody id="staffTable"></tbody></table></div>
+        </div>
+      </section>
+
+
+      
+      <section id="page-operations" class="page">
+        <div class="hero-card"><h2>Operations — deliver the trip.</h2><p>Connect a booking to itinerary items, hotels, transport, drivers and service tasks so sales handover becomes an operational workflow.</p></div>
+        <div class="grid-3">
+          <div class="card"><div class="card-icon"><i data-lucide="hotel"></i></div><h3>Hotels</h3><p>Manage hotel partners and booking allocations.</p><button class="btn small" data-open="vendorModal">Add supplier</button></div>
+          <div class="card"><div class="card-icon"><i data-lucide="bus-front"></i></div><h3>Transport</h3><p>Assign vehicles and drivers to confirmed trips.</p><button class="btn small" data-page="drivers">Open vehicles</button></div>
+          <div class="card"><div class="card-icon"><i data-lucide="list-checks"></i></div><h3>Trip tasks</h3><p>Use the booking workflow to keep service delivery organised.</p><button class="btn small" data-page="bookings">Open bookings</button></div>
+        </div>
+        <div class="card" style="margin-top:16px"><div class="card-head"><div><h2>Booking-to-delivery flow</h2><p>Integrated ERP/CRM handoff.</p></div></div>
+          <div class="process">
+            <div class="process-card"><span class="process-no">01</span><h3>Lead qualified</h3><p>CRM captures customer need and travel intent.</p></div>
+            <div class="process-card"><span class="process-no">02</span><h3>Quote prepared</h3><p>Quotation uses fixed or custom package pricing.</p></div>
+            <div class="process-card"><span class="process-no">03</span><h3>Booking confirmed</h3><p>Revenue and customer balance become ERP records.</p></div>
+            <div class="process-card"><span class="process-no">04</span><h3>Trip delivered</h3><p>Drivers, suppliers and itinerary tasks support operations.</p></div>
+          </div>
+        </div>
+      </section>
+
+<section id="page-documents" class="page">
+        <div class="hero-card">
+          <h2>Invoices &amp; travel documents</h2>
+          <p>Create professional invoices, quotations, payment receipts and itineraries in INR or AED, then print or save them as PDF.</p>
+        </div>
+        <div class="toolbar">
+          <div class="search"><i data-lucide="search"></i><input id="documentSearch" placeholder="Search document, customer or booking…"></div>
+          <div class="actions"><button class="btn primary" data-open="documentModal"><i data-lucide="file-plus-2"></i> New document</button></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><div><h2>Document register</h2><p>Invoices, quotations, receipts and itineraries stored in Firebase.</p></div></div>
+          <div class="table-wrap"><table><thead><tr><th>Number</th><th>Type</th><th>Customer</th><th>Date</th><th>Currency</th><th>Total</th><th>Status</th><th></th></tr></thead><tbody id="documentsTable"></tbody></table></div>
+        </div>
+      </section>
+
+<section id="page-backup" class="page">
+        <div class="grid-2">
+          <div class="card"><div class="card-head"><div><h2>Export backup</h2><p>Download a JSON snapshot of Firestore collections.</p></div><i data-lucide="download"></i></div><p style="font-size:13px;color:var(--muted)">This creates a local backup file containing the collections visible to the signed-in admin.</p><button class="btn primary" id="exportBtn"><i data-lucide="download"></i> Export JSON backup</button></div>
+          <div class="card"><div class="card-head"><div><h2>Restore backup</h2><p>Import a compatible JSON backup.</p></div><i data-lucide="upload"></i></div><p style="font-size:13px;color:var(--muted)">Restore writes documents back to Firestore. Use carefully and keep a fresh backup before restoring.</p><input id="restoreFile" type="file" accept=".json,application/json"><button class="btn danger" id="restoreBtn" style="margin-top:10px"><i data-lucide="database-restore"></i> Restore selected file</button></div>
+        </div>
+        <div class="card" style="margin-top:16px"><div class="card-head"><div><h2>Scheduled Firebase backup</h2><p>Optional server-side backup architecture is included in <code>functions/</code>.</p></div><span class="badge blue">Cloud Function</span></div><p style="font-size:13px;color:var(--muted)">The included function can be scheduled to export Firestore to Cloud Storage. Enable the required Google Cloud/Firebase services and deploy the function before relying on scheduled backups.</p></div>
+      </section>
+
+      <section id="page-settings" class="page">
+        <div class="card"><div class="card-head"><div><h2>Settings</h2><p>Admin preferences and Firebase status.</p></div></div>
+          <div class="settings-list">
+            <div class="setting"><div><strong>Firebase connection</strong><p id="firebaseProject">Checking project…</p></div><span id="settingsConnection" class="badge amber">Checking</span></div>
+            <div class="setting"><div><strong>Signed-in admin</strong><p id="settingsEmail">—</p></div><span class="badge green">Authenticated</span></div>
+            <div class="setting"><div><strong>Data storage</strong><p>Cloud Firestore for structured records; Firebase Storage can be used for package images/documents.</p></div><span class="badge blue">Firestore</span></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </section>
+</div>
+
+<!-- Modals -->
+<!-- Document modal -->
+<div id="documentModal" class="modal-backdrop"><div class="modal">
+  <div class="modal-head"><h2>New travel document</h2><button class="icon-btn" data-close="documentModal"><i data-lucide="x"></i></button></div>
+  <form id="documentForm">
+    <div class="modal-body">
+      <div class="form-grid">
+        <div class="field"><label>Document type</label><select id="documentType"><option>Invoice</option><option>Quotation</option><option>Payment Receipt</option><option>Itinerary</option></select></div>
+        <div class="field"><label>Document number</label><input id="documentNumber" required placeholder="INV-2026-0001"></div>
+        <div class="field"><label>Customer</label><input id="documentCustomer" required></div>
+        <div class="field"><label>Booking reference</label><input id="documentBooking" placeholder="BK-0001"></div>
+        <div class="field"><label>Issue date</label><input id="documentDate" type="date" required></div>
+        <div class="field"><label>Currency</label><select id="documentCurrency"><option value="INR">INR ₹</option><option value="AED">AED د.إ</option></select></div>
+        <div class="field"><label>Subtotal</label><input id="documentSubtotal" type="number" min="0" value="0" required></div>
+        <div class="field"><label>Discount</label><input id="documentDiscount" type="number" min="0" value="0"></div>
+        <div class="field"><label>Tax %</label><input id="documentTaxRate" type="number" min="0" step="0.01" value="0"></div>
+        <div class="field"><label>Status</label><select id="documentStatus"><option>Draft</option><option>Issued</option><option>Paid</option><option>Partially Paid</option><option>Cancelled</option></select></div>
+        <div class="field full"><label>Items / description</label><textarea id="documentItems" required placeholder="Kerala package — 4 adults — hotel + transport + sightseeing"></textarea></div>
+        <div class="field full"><label>Notes / payment terms</label><textarea id="documentNotes" placeholder="Payment terms, inclusions, exclusions or special notes"></textarea></div>
+      </div>
+      <div style="margin-top:15px;padding:13px;border:1px solid var(--line);border-radius:13px;background:#fafafa">
+        <div class="stat-row"><span>Tax</span><b id="documentTaxPreview">₹0</b></div>
+        <div class="stat-row"><span>Total</span><b id="documentTotalPreview">₹0</b></div>
+      </div>
+    </div>
+    <div class="modal-foot"><button type="button" class="btn" data-close="documentModal">Cancel</button><button class="btn primary" type="submit"><i data-lucide="save"></i> Save document</button></div>
+  </form>
+</div></div>
+
+
+
+<div id="leadModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>New CRM lead</h2><button class="icon-btn" data-close="leadModal"><i data-lucide="x"></i></button></div>
+<form id="leadForm"><div class="modal-body"><div class="form-grid">
+<div class="field"><label>Name</label><input id="leadName" required></div><div class="field"><label>Mobile</label><input id="leadMobile" required></div>
+<div class="field"><label>Email</label><input id="leadEmail" type="email"></div><div class="field"><label>Source</label><select id="leadSource"><option>Website</option><option>WhatsApp</option><option>Phone</option><option>Walk-in</option><option>Referral</option><option>Social</option></select></div>
+<div class="field"><label>Interest</label><select id="leadInterest"><option>eVisa</option><option>Umrah</option><option>Tour — Fixed Price</option><option>Tour — Custom Choose</option></select></div>
+<div class="field"><label>Estimated value</label><input id="leadValue" type="number" min="0" value="0"></div>
+<div class="field"><label>Stage</label><select id="leadStage"><option>New</option><option>Contacted</option><option>Qualified</option><option>Quoted</option><option>Won</option><option>Lost</option></select></div>
+<div class="field"><label>Next follow-up</label><input id="leadFollowup" type="date"></div>
+<div class="field full"><label>Notes</label><textarea id="leadNotes" placeholder="Customer requirement, destination, travellers, dates, preferences…"></textarea></div>
+</div></div><div class="modal-foot"><button type="button" class="btn" data-close="leadModal">Cancel</button><button class="btn primary" type="submit"><i data-lucide="save"></i> Save lead</button></div></form></div></div>
+
+<div id="vendorModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>New supplier / vendor</h2><button class="icon-btn" data-close="vendorModal"><i data-lucide="x"></i></button></div>
+<form id="vendorForm"><div class="modal-body"><div class="form-grid">
+<div class="field"><label>Supplier name</label><input id="vendorName" required></div><div class="field"><label>Category</label><select id="vendorCategory"><option>Hotel</option><option>Transport</option><option>Visa Partner</option><option>Airline</option><option>Guide</option><option>Other</option></select></div>
+<div class="field"><label>Contact</label><input id="vendorContact"></div><div class="field"><label>Currency</label><select id="vendorCurrency"><option value="INR">INR ₹</option><option value="AED">AED د.إ</option></select></div>
+<div class="field"><label>Payable balance</label><input id="vendorPayable" type="number" min="0" value="0"></div><div class="field"><label>Status</label><select id="vendorStatus"><option>Active</option><option>Inactive</option></select></div>
+<div class="field full"><label>Notes</label><textarea id="vendorNotes"></textarea></div>
+</div></div><div class="modal-foot"><button type="button" class="btn" data-close="vendorModal">Cancel</button><button class="btn primary" type="submit">Save supplier</button></div></form></div></div>
+
+<div id="packageModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2 id="packageModalTitle">New package</h2><button class="icon-btn" data-close="packageModal"><i data-lucide="x"></i></button></div><form id="packageForm"><div class="modal-body"><input type="hidden" id="packageId"><div class="form-grid"><div class="field full"><label>Package name</label><input id="packageName" required placeholder="Kerala 4D / 3N"></div><div class="field"><label>Destination</label><input id="packageDestination" required placeholder="Munnar • Alleppey"></div><div class="field"><label>Duration</label><input id="packageDuration" required placeholder="4 Days / 3 Nights"></div><div class="field"><label>Price</label><input id="packagePrice" type="number" min="0" required placeholder="24999"></div><div class="field"><label>Currency</label><select id="packageCurrency"><option value="INR">INR ₹</option><option value="AED">AED د.إ</option></select></div>
+<div class="field"><label>Service type</label><select id="packageServiceType"><option>eVisa</option><option>Umrah</option><option>Tour — Fixed Price</option><option>Tour — Custom Choose</option></select></div>
+<div class="field"><label>Pricing model</label><select id="packagePricingModel"><option>Fixed</option><option>Custom</option></select></div><div class="field"><label>Status</label><select id="packageStatus"><option>Active</option><option>Draft</option><option>Archived</option></select></div><div class="field full"><label>Description</label><textarea id="packageDescription" placeholder="Short package description"></textarea></div></div></div><div class="modal-foot"><button type="button" class="btn" data-close="packageModal">Cancel</button><button class="btn primary" type="submit">Save package</button></div></form></div></div>
+
+<div id="bookingModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>New booking</h2><button class="icon-btn" data-close="bookingModal"><i data-lucide="x"></i></button></div><form id="bookingForm"><div class="modal-body"><div class="form-grid"><div class="field"><label>Customer</label><input id="bookingCustomer" required></div><div class="field"><label>Package</label><select id="bookingPackage" required></select></div><div class="field"><label>Travel date</label><input id="bookingDate" type="date" required></div><div class="field"><label>Amount</label><input id="bookingAmount" type="number" min="0" required></div><div class="field"><label>Currency</label><select id="bookingCurrency"><option value="INR">INR ₹</option><option value="AED">AED د.إ</option></select></div><div class="field"><label>Status</label><select id="bookingStatus"><option>Confirmed</option><option>Pending</option><option>Cancelled</option></select></div><div class="field"><label>Payment</label><select id="bookingPayment"><option>Paid</option><option>Partial</option><option>Unpaid</option></select></div></div></div><div class="modal-foot"><button type="button" class="btn" data-close="bookingModal">Cancel</button><button class="btn primary" type="submit">Save booking</button></div></form></div></div>
+
+<div id="customerModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>New customer</h2><button class="icon-btn" data-close="customerModal"><i data-lucide="x"></i></button></div><form id="customerForm"><div class="modal-body"><div class="form-grid"><div class="field"><label>Name</label><input id="customerName" required></div><div class="field"><label>Mobile</label><input id="customerMobile" required></div><div class="field"><label>Email</label><input id="customerEmail" type="email"></div><div class="field"><label>City</label><input id="customerCity"></div></div></div><div class="modal-foot"><button type="button" class="btn" data-close="customerModal">Cancel</button><button class="btn primary" type="submit">Save customer</button></div></form></div></div>
+
+<div id="driverModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Driver / vehicle</h2><button class="icon-btn" data-close="driverModal"><i data-lucide="x"></i></button></div><form id="driverForm"><div class="modal-body"><div class="form-grid"><div class="field"><label>Driver</label><input id="driverName" required></div><div class="field"><label>Mobile</label><input id="driverMobile" required></div><div class="field"><label>Vehicle</label><input id="driverVehicle" placeholder="Tempo Traveller"></div><div class="field"><label>Registration</label><input id="driverReg" placeholder="KL-00-AA-0000"></div><div class="field"><label>Capacity</label><input id="driverCapacity" type="number" min="1" value="12"></div><div class="field"><label>Status</label><select id="driverStatus"><option>Available</option><option>On trip</option><option>Inactive</option></select></div></div></div><div class="modal-foot"><button type="button" class="btn" data-close="driverModal">Cancel</button><button class="btn primary" type="submit">Save</button></div></form></div></div>
+
+<div id="expenseModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>New expense</h2><button class="icon-btn" data-close="expenseModal"><i data-lucide="x"></i></button></div><form id="expenseForm"><div class="modal-body"><div class="form-grid"><div class="field"><label>Date</label><input id="expenseDate" type="date" required></div><div class="field"><label>Category</label><select id="expenseCategory"><option>Fuel</option><option>Hotel</option><option>Transport</option><option>Food</option><option>Marketing</option><option>Office</option><option>Other</option></select></div><div class="field"><label>Description</label><input id="expenseDescription" required></div><div class="field"><label>Vendor</label><input id="expenseVendor"></div><div class="field"><label>Amount</label><input id="expenseAmount" type="number" min="0" required></div><div class="field"><label>Currency</label><select id="expenseCurrency"><option value="INR">INR ₹</option><option value="AED">AED د.إ</option></select></div></div></div><div class="modal-foot"><button type="button" class="btn" data-close="expenseModal">Cancel</button><button class="btn primary" type="submit">Save expense</button></div></form></div></div>
+
+
+<div id="staffModal" class="modal-backdrop"><div class="modal"><div class="modal-head"><h2>Add staff member</h2><button class="icon-btn" data-close="staffModal"><i data-lucide="x"></i></button></div>
+<form id="staffForm"><div class="modal-body">
+  <div class="form-grid">
+    <div class="field"><label>Staff name</label><input id="staffName" required></div>
+    <div class="field"><label>Email</label><input id="staffEmail" type="email" required></div>
+    <div class="field"><label>Temporary password</label><input id="staffPassword" type="password" minlength="6" required></div>
+    <div class="field"><label>Status</label><select id="staffStatus"><option value="active">Active</option><option value="disabled">Disabled</option></select></div>
+  </div>
+  <div style="margin-top:18px"><strong style="font-size:13px">Allowed modules</strong><p style="font-size:11px;color:var(--muted);margin:4px 0 12px">Admin remains unrestricted. Staff access is limited to these modules.</p>
+    <div class="grid-2">
+      <label class="setting"><span><strong>Packages</strong><p>Create/edit travel products</p></span><input class="perm-check" type="checkbox" data-perm="packages" checked style="width:18px"></label>
+      <label class="setting"><span><strong>Bookings</strong><p>Reservations and payments</p></span><input class="perm-check" type="checkbox" data-perm="bookings" checked style="width:18px"></label>
+      <label class="setting"><span><strong>Customers</strong><p>Customer directory</p></span><input class="perm-check" type="checkbox" data-perm="customers" checked style="width:18px"></label>
+      <label class="setting"><span><strong>Drivers</strong><p>Vehicles and assignments</p></span><input class="perm-check" type="checkbox" data-perm="drivers"></label>
+      <label class="setting"><span><strong>Expenses</strong><p>Cost tracking</p></span><input class="perm-check" type="checkbox" data-perm="expenses"></label>
+      <label class="setting"><span><strong>Invoices &amp; Documents</strong><p>Create and print customer documents</p></span><input class="perm-check" type="checkbox" data-perm="documents"></label>
+      <label class="setting"><span><strong>Backup</strong><p>Export/restore data</p></span><input class="perm-check" type="checkbox" data-perm="backup"></label>
+    </div>
+  </div>
+</div><div class="modal-foot"><button type="button" class="btn" data-close="staffModal">Cancel</button><button class="btn primary" type="submit"><i data-lucide="user-plus"></i> Create staff</button></div></form></div></div>
+
+<div id="toast" class="toast"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>
