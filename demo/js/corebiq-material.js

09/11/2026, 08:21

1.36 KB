@@ -1,0 +1,47 @@
+
+/* COREBIQ Material interactions */
+(() => {
+  const q = (s, r=document) => r.querySelector(s);
+  const qa = (s, r=document) => [...r.querySelectorAll(s)];
+
+  qa('[data-cb-menu]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = q(btn.dataset.cbMenu);
+      if (target) target.classList.toggle('open');
+    });
+  });
+
+  qa('[data-cb-dialog-open]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = q(btn.dataset.cbDialogOpen);
+      if (target) target.classList.add('open');
+    });
+  });
+
+  qa('[data-cb-dialog-close]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.closest('.cb-dialog-backdrop');
+      if (target) target.classList.remove('open');
+    });
+  });
+
+  qa('.cb-dialog-backdrop').forEach(backdrop => {
+    backdrop.addEventListener('click', e => {
+      if (e.target === backdrop) backdrop.classList.remove('open');
+    });
+  });
+
+  qa('[data-cb-drawer-open]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = q(btn.dataset.cbDrawerOpen);
+      if (target) target.classList.add('open');
+    });
+  });
+
+  qa('[data-cb-drawer-close]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.closest('.cb-drawer');
+      if (target) target.classList.remove('open');
+    });
+  });
+})();
