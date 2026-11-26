@@ -126,4 +126,25 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/contact.html" />
     <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/contact.html" />
   </url>
+  <url>
+    <loc>https://corebiq.com/founder.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/founder.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/founder.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/founder.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/founder.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/founder.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/founder.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/founder.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/founder.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/founder.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/founder.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/founder.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/founder.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/founder.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/founder.html" />
+  </url>
 </urlset>

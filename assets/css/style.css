@@ -148,3 +148,56 @@ body,button,input,select,textarea,.btn,.eyebrow {font-family:var(--font)}
   .metrics strong{font-size:19px}
   .metrics small{font-size:11px}
 }
+
+/* Founder profile — COREBIQ blue, Poppins and Inter */
+.founder-hero{background:radial-gradient(ellipse at 86% 20%,#d8eaff 0%,transparent 52%),linear-gradient(125deg,#f9fbff,#eef5ff);border-bottom:1px solid var(--line);padding:70px 0}
+.founder-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(30px,5vw,70px);align-items:center}
+.founder-intro{min-width:0}
+.founder-intro h1{font-size:clamp(2.3rem,4.5vw,4.2rem);overflow-wrap:anywhere}
+.founder-back{display:inline-block;color:var(--blue-dark);font-size:14px;font-weight:600;margin-bottom:24px;text-decoration:underline;text-underline-offset:4px}
+.founder-role{font-weight:700;color:var(--blue);font-size:clamp(1.1rem,2vw,1.4rem);margin-top:10px}
+.founder-professional{margin-top:10px;font-size:16px}
+.founder-facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:26px 0}
+.founder-facts>div{padding:16px;border:1px solid #c8daef;background:#ffffffcc;border-radius:10px}
+.founder-facts strong{display:block;font-family:var(--heading);font-size:clamp(1.5rem,3vw,2.1rem);color:var(--blue-dark);line-height:1.2}
+.founder-facts span{display:block;font-size:13px;color:var(--muted);margin-top:6px}
+.founder-bio{font-size:17px;line-height:1.8}
+.founder-portrait{margin:0;position:relative;border:1px solid #c8d8ed;border-radius:16px;overflow:hidden;box-shadow:0 24px 55px #163a7020;background:#fff}
+.founder-portrait img{width:100%;height:auto;aspect-ratio:400/368;object-fit:cover}
+.founder-portrait figcaption{display:grid;gap:3px;padding:18px 20px;color:var(--navy);font-weight:700;font-size:16px}
+.founder-portrait figcaption span{color:var(--blue);font-weight:500;font-size:13px}
+.founder-vision{display:grid;grid-template-columns:1fr minmax(160px,30%);gap:34px;align-items:center}
+.founder-vision p{font-size:17px;margin-top:14px;line-height:1.8}
+.founder-vision img{width:100%;height:auto}
+.founder-quote{position:relative;isolation:isolate;overflow:hidden;border-radius:16px;background:linear-gradient(120deg,#102442,#2058a8);padding:clamp(26px,5vw,56px);color:white}
+.founder-quote::after{content:"";position:absolute;inset-inline-end:-30px;inset-block-end:-65px;width:min(60%,350px);aspect-ratio:1;background:url("../img/logo.webp?v=20261126") center/contain no-repeat;filter:grayscale(1) brightness(1.7);opacity:.07;z-index:-1;pointer-events:none}
+.founder-quote .eyebrow{color:#bcd9ff}
+.founder-quote blockquote{margin:0;max-width:850px}
+.founder-quote-mark{font-family:Georgia,serif;font-size:75px;line-height:.85;color:#91bfff;display:block}
+.founder-quote blockquote p{font-family:var(--heading);font-size:clamp(1.35rem,3vw,2.2rem);font-weight:500;line-height:1.5;color:#fff}
+.founder-quote cite{display:block;margin-top:25px;font-style:normal;font-weight:700;color:#fff}
+.founder-quote cite span{display:block;font-size:13px;color:#c8dcfa;font-weight:500}
+.founder-preview-grid{display:grid;grid-template-columns:minmax(190px,30%) 1fr;align-items:center;gap:clamp(22px,4vw,45px);padding:clamp(20px,4vw,40px);border:1px solid #d3e2f4;border-radius:16px;background:linear-gradient(115deg,#f5f9ff,#fff)}
+.founder-preview-photo{display:block;overflow:hidden;border-radius:12px;border:1px solid var(--line)}
+.founder-preview-photo img{width:100%;height:auto}
+.founder-preview-copy>p:not(.founder-role){margin-top:12px;line-height:1.75}
+.founder-preview-copy .btn{margin-top:20px}
+@media(max-width:1100px){
+.header nav{display:none;position:absolute;top:100%;inset-inline:0;margin:0;padding:10px 22px 18px;background:white;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+.header nav.open{display:flex;flex-direction:column;align-items:stretch;gap:0}
+.header nav a{padding:13px 12px;border-radius:6px;font-size:16px;min-height:48px}
+.header nav a[aria-current]{background:#eaf2ff}
+.header nav a[aria-current]:after{display:none}
+.menu{display:grid;place-items:center;width:44px;height:44px}
+.nav-tools{margin-inline-start:auto}
+}
+@media(max-width:720px){
+.founder-hero{padding:36px 0}
+.founder-hero-grid,.founder-preview-grid,.founder-vision{grid-template-columns:1fr;gap:24px}
+.founder-portrait{grid-row:1;max-width:420px;width:100%;margin-inline:auto}
+.founder-preview-photo{max-width:300px;width:100%;margin-inline:auto}
+.founder-intro h1{font-size:clamp(2rem,8.7vw,3rem)}
+.founder-facts>div{padding:12px}
+.founder-vision img{max-width:230px;justify-self:center}
+.founder-bio,.founder-vision p{font-size:16px}
+}

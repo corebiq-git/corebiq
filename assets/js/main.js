@@ -15,7 +15,7 @@
  menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open))});
  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
  document.addEventListener('click',e=>{if(!nav.contains(e.target)&&!menu.contains(e.target))closeMenu()});
- window.addEventListener('resize',()=>{if(innerWidth>850)closeMenu()});
+ window.addEventListener('resize',()=>{if(innerWidth>1100)closeMenu()});
  document.getElementById('year').textContent=new Date().getFullYear();
  const form=document.getElementById('enquiry');
  if(form)form.addEventListener('submit',e=>{e.preventDefault();if(!form.reportValidity())return;const f=new FormData(form);const labels={en:['COREBIQ project enquiry','Name','Company','Email','Phone','Requirements'],ar:['استفسار عن مشروع COREBIQ','الاسم','الشركة','البريد الإلكتروني','الهاتف','المتطلبات'],fr:['Demande de projet COREBIQ','Nom','Entreprise','E-mail','Téléphone','Besoins']}[lang];const msg=[labels[0],...['name','company','email','phone','message'].map((k,i)=>[labels[i+1],String(f.get(k)||'').trim()]).filter(x=>x[1]).map(x=>x.join(': '))].join('\n');window.open('https://wa.me/919946151111?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')});
