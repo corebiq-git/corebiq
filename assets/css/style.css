@@ -64,3 +64,87 @@ body,button,input,select,textarea,.btn,.eyebrow {font-family:var(--font)}
 .section.illustrated>.cta::before{inset-inline-end:-50px;width:180px}
 .visual-main::before{width:90%;opacity:.12}
 }
+
+/* Mobile readability — larger typography, Lucide icons and touch targets. */
+@media(max-width:850px){
+  body{font-size:16px;line-height:1.65}
+  h2{font-size:clamp(1.8rem,5.6vw,2.35rem);line-height:1.25}
+  h3{font-size:1.2rem;line-height:1.4}
+  .header nav a{font-size:16px;min-height:48px;padding:13px 12px}
+  .nav-tools{gap:8px}
+  .menu{width:44px;height:44px}
+  .menu svg{width:25px;height:25px}
+  .lang-control{min-height:44px;padding:7px 9px}
+  .lang-control select{font-size:15px;min-height:26px}
+  .lang-control svg{width:20px;height:20px}
+  .eyebrow{font-size:13px;letter-spacing:.075em;gap:8px}
+  .eyebrow svg{width:20px;height:20px}
+  .home-hero p,.page-hero p{font-size:18px;line-height:1.65}
+  .section-head p{font-size:17px}
+  .btn{font-size:16px;min-height:48px;padding:12px 15px;gap:9px}
+  .btn svg{width:22px;height:22px}
+  .hero-note{font-size:14px;align-items:flex-start}
+  .hero-note svg{width:20px;height:20px;margin-top:2px}
+  .tile p{font-size:16px}
+  .icon{width:50px;height:50px}
+  .icon svg{width:27px;height:27px}
+  .industry-list{gap:10px}
+  .industry-list a{font-size:15px;line-height:1.4;min-height:60px;gap:9px;padding:12px;overflow-wrap:anywhere}
+  .industry-list a>span{min-width:0}
+  .industry-list svg{width:23px;height:23px;flex-shrink:0}
+  .industry-list.large a{min-height:76px}
+  .strip>div{font-size:14px;line-height:1.4;gap:8px}
+  .strip svg{width:22px;height:22px}
+  .language-options button{font-size:16px;min-height:64px}
+  .language-options small{font-size:14px}
+  .language-options b{font-size:17px;width:46px;height:46px}
+  .visual-top{padding:12px}
+  .visual-brand{font-size:14px;gap:7px}
+  .visual-brand img{width:28px;height:28px}
+  .visual-brand span{font-size:12px}
+  .visual-side{padding:13px 6px;gap:12px}
+  .visual-side div{width:32px;height:32px}
+  .visual-side svg{width:22px;height:22px}
+  .visual-label{font-size:14px}
+  .metrics>div{padding:9px 7px;min-width:0}
+  .metrics small{font-size:12px;line-height:1.35}
+  .metrics strong{font-size:22px;line-height:1.4}
+  .mini-row>span{font-size:12px}
+  .mini-row svg{width:16px;height:16px}
+  .visual-caption{font-size:12px}
+  .contact-grid h2{font-size:1.65rem}
+  .contact-line{font-size:16px;min-height:48px}
+  .contact-line svg{width:23px;height:23px}
+  form label{font-size:15px}
+  input,textarea{font-size:16px;min-height:48px}
+  .form-note{font-size:14px!important}
+  .footer-grid h3{font-size:16px}
+  .footer-grid p,.footer-grid>div>a:not(.brand),.footer-links a{font-size:14px}
+  .footer-links a{padding:6px 0}
+  .foot-bottom{font-size:12px}
+}
+@media(max-width:520px){
+  .home-hero h1{font-size:clamp(2.2rem,10vw,3.1rem);line-height:1.14}
+  .page-hero h1{font-size:clamp(2rem,8.7vw,2.7rem);line-height:1.2}
+  .header .brand img.brand-lockup{width:clamp(132px,43vw,190px)}
+  .industry-list a{font-size:14px;padding:11px 10px;min-height:64px;gap:8px}
+  .industry-list svg{width:22px;height:22px}
+  .strip>div{font-size:13px;gap:6px}
+  .strip svg{width:20px;height:20px}
+  .actions .btn{max-width:100%}
+  .visual-main{padding:10px}
+  .metrics{gap:6px}
+  .graph{padding:10px}
+}
+@media(max-width:350px){
+  .industry-list{grid-template-columns:1fr}
+  .industry-list a{font-size:15px;min-height:54px}
+  .nav-tools{gap:5px}
+  .lang-control{padding:6px}
+  .lang-control select{font-size:14px;max-width:65px}
+  .visual-side{padding-inline:4px}
+  .visual-side div{width:28px;height:28px}
+  .visual-side svg{width:20px;height:20px}
+  .metrics strong{font-size:19px}
+  .metrics small{font-size:11px}
+}
