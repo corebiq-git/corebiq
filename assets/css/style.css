@@ -14,7 +14,7 @@
   width: min(68%, 76px);
   aspect-ratio: 1;
   transform: translateY(-50%);
-  background: url("../img/logo.webp") center / contain no-repeat;
+  background: url("../img/logo.webp?v=20261126") center / contain no-repeat;
   mix-blend-mode: multiply;
   opacity: 0.085;
   pointer-events: none;
@@ -26,3 +26,13 @@
     width: min(72%, 56px);
   }
 }
+
+/* Revised COREBIQ artwork: original lockup, responsive sizing and light surfaces. */
+.brand img.brand-lockup {width:220px;height:auto;max-width:100%;object-fit:contain;mix-blend-mode:multiply;}
+.header .brand {min-width:0;}
+.footer-grid .brand img.brand-lockup {width:220px;}
+@media(max-width:1050px){.header .brand img.brand-lockup{width:185px;}}
+@media(min-width:851px) and (max-width:940px){.header nav{gap:10px}.nav-row{gap:10px}.header .brand img.brand-lockup{width:165px;}}
+@media(max-width:850px){.header .brand{flex-shrink:1}.header .brand img.brand-lockup{width:190px;}.nav-tools{flex-shrink:0;}}
+@media(max-width:520px){.header .brand img.brand-lockup{width:158px;}.footer-grid .brand img.brand-lockup{width:190px;}}
+@media(max-width:360px){.header .brand img.brand-lockup{width:132px;}}
