@@ -1,15 +1,129 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://corebiq.com/</loc></url>
-  <url><loc>https://corebiq.com/about/</loc></url>
-  <url><loc>https://corebiq.com/businesses/</loc></url>
-  <url><loc>https://corebiq.com/businesses/tax/</loc></url>
-  <url><loc>https://corebiq.com/businesses/compliance/</loc></url>
-  <url><loc>https://corebiq.com/products/</loc></url>
-  <url><loc>https://corebiq.com/technology/</loc></url>
-  <url><loc>https://corebiq.com/insights/</loc></url>
-  <url><loc>https://corebiq.com/careers/</loc></url>
-  <url><loc>https://corebiq.com/contact/</loc></url>
-  <url><loc>https://corebiq.com/privacy/</loc></url>
-  <url><loc>https://corebiq.com/terms/</loc></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://corebiq.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/solutions.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/industries.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/industries.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/industries.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/industries.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/industries.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/about.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/about.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/about.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/about.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/developers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/developers.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/developers.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/developers.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/developers.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/contact.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/solutions.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/industries.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/industries.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/industries.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/industries.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/industries.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/about.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/about.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/about.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/about.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/developers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/developers.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/developers.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/developers.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/developers.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/ar/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/contact.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/solutions.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/solutions.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/solutions.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/industries.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/industries.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/industries.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/industries.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/industries.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/about.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/about.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/about.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/about.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/about.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/developers.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/developers.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/developers.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/developers.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/developers.html" />
+  </url>
+  <url>
+    <loc>https://corebiq.com/fr/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://corebiq.com/contact.html" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://corebiq.com/ar/contact.html" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://corebiq.com/fr/contact.html" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://corebiq.com/contact.html" />
+  </url>
 </urlset>

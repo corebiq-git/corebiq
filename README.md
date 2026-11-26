@@ -1,48 +1,9 @@
-# COREBIQ Corporate Website
+# COREBIQ production website
 
-Google-inspired visual language based directly on the supplied COREBIQ HTML:
-- Product Sans / Roboto typography
-- #1a73e8 COREBIQ blue
-- #202124 primary text
-- #5f6368 secondary text
-- #f8f9fa light sections
-- 1200px content width
-- rounded cards, pill CTAs, subtle borders/shadows
-- responsive navigation
+Static corporate website for https://corebiq.com. Six pages in English, Arabic (RTL) and French, with crawlable independent URLs. Shared CSS, JS and supplied logo assets.
 
-## Corporate pages
-/ about / businesses / products / technology / insights / careers / contact / privacy / terms
+Run `python -m http.server 8080` in the site root to preview. GitHub Pages: use `main` / root if that is the configured hosting source. CNAME preserves corebiq.com.
 
-## Business pages
-/businesses/tax/
-/businesses/compliance/
+SEO: page-specific titles and descriptions, canonical URLs, reciprocal hreflang, Organization/WebSite/WebPage/Breadcrumb structured data, Open Graph and Twitter previews, sitemap and robots. Demo folder excluded from crawl requests (not access control).
 
-## Assets
-assets/brand/
-assets/icons/
-assets/images/
-assets/fonts/
-assets/css/corebiq.css
-assets/js/corebiq.js
-
-The supplied source is retained as the design reference; the new package externalizes the CSS/JS and creates a clean corporate page hierarchy.
-
-## Publishing checklist
-
-1. Upload the contents of this folder to the document root for `corebiq.com`.
-2. Confirm HTTPS and redirect HTTP to HTTPS.
-3. Confirm `https://corebiq.com/robots.txt` and `https://corebiq.com/sitemap.xml` load.
-4. Add `corebiq.com` to Google Search Console and submit the sitemap.
-5. Verify every canonical URL matches the live URL.
-6. Replace placeholder legal content with the final approved policies before launch.
-7. Add GA4 only if analytics is required; use a consent-aware implementation where applicable.
-8. Replace the editable OG SVG with a PNG/JPG if a social platform requires raster previews.
-9. Add real product/business pages as they go live and update the sitemap.
-
-## SEO principles
-- One clear H1 per page.
-- Descriptive page titles and meta descriptions.
-- Human-readable URLs.
-- Internal links between corporate, business and product pages.
-- No keyword stuffing.
-- Publish useful original Insights content over time.
+Contact opens a prefilled WhatsApp message, with no website enquiry storage. Dashboard uses sample data. Google Fonts is external. Verify translations, domain hosting, contact and product claims, and publish an organization-approved privacy notice before launch. Submit sitemap in Google Search Console after verifying ownership.
