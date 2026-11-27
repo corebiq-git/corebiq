@@ -1094,3 +1094,15 @@ a {
         width: 100%;
     }
 }
+
+/* Fix icon sizing in footer & mobile drawer quick actions */
+.footer-action-row a svg,
+.drawer-quick-actions a svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* Blend white logo background into the Gemini tonal footer */
+.footer-brand .brand-lockup {
+    mix-blend-mode: multiply;
+}
