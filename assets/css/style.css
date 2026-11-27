@@ -318,3 +318,11 @@ html.drawer-open,html.drawer-open body{overflow:hidden;overscroll-behavior:none}
 .drawer-bottom{padding-inline:14px}
 }
 @media(prefers-reduced-motion:reduce){.mobile-drawer[open]{animation:none}}
+
+/* Compact footer actions; original links remain readable without JS. */
+.site-footer .footer-contact-list.contact-icons{display:flex;flex-wrap:wrap;align-items:center;gap:8px;grid-template-columns:none}
+.site-footer .footer-contact-list.contact-icons a{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;width:44px;height:44px;min-height:44px;padding:0;box-sizing:border-box;background:#fff;border:1px solid #dce5ef;border-radius:9px;color:var(--blue);transition:background .15s ease,border-color .15s ease,color .15s ease}
+.site-footer .footer-contact-list.contact-icons a svg{width:22px;height:22px;flex:none;color:currentColor}
+.site-footer .footer-contact-list.contact-icons a:hover{background:#eaf2ff;border-color:#b9d2f4;color:var(--blue-dark)}
+.site-footer .footer-contact-list.contact-icons a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.site-footer .footer-contact-list.contact-icons a{transition:none}}
