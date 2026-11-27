@@ -326,3 +326,33 @@ html.drawer-open,html.drawer-open body{overflow:hidden;overscroll-behavior:none}
 .site-footer .footer-contact-list.contact-icons a:hover{background:#eaf2ff;border-color:#b9d2f4;color:var(--blue-dark)}
 .site-footer .footer-contact-list.contact-icons a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
 @media(prefers-reduced-motion:reduce){.site-footer .footer-contact-list.contact-icons a{transition:none}}
+
+/* Industry grid: balanced cards, compact illustration, accessible interactions. */
+.section.art-industries>.section-head{margin-bottom:22px}
+.industry-list{gap:12px;grid-auto-rows:1fr}
+.industry-list a{display:flex;align-items:center;gap:12px;min-height:74px;padding:14px;border:1px solid #dce5ef;border-radius:10px;background:#fff;font-family:Inter,system-ui,sans-serif;font-size:15px;font-weight:500;line-height:1.35;transition:background .16s ease,border-color .16s ease,box-shadow .16s ease;color:inherit}
+[lang=ar] .industry-list a{font-family:"Noto Sans Arabic",Inter,sans-serif}
+.industry-list a>span{min-width:0;overflow-wrap:break-word}
+.industry-list a>svg:first-child{box-sizing:content-box;width:23px;height:23px;padding:9px;flex:none;border-radius:9px;background:#edf4ff;color:var(--blue)}
+.industry-list a:hover,.industry-list a:active{border-color:#9ebde9;background:#f5f9ff;box-shadow:0 2px 8px #285ca40b}
+.industry-list a:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+.section.illustrated>.industry-list.large::before{content:none}
+.section.art-industries>.section-head h2{font-family:Poppins,Inter,sans-serif}
+[lang=ar] .section.art-industries>.section-head h2{font-family:"Noto Sans Arabic",Inter,sans-serif}
+@media(max-width:650px){
+  .section.art-industries>.section-head{display:grid;grid-template-columns:minmax(0,1fr) 88px;gap:0 12px;align-items:center;min-height:0;padding-inline-end:0;margin-bottom:16px}
+  .section.art-industries>.section-head>.eyebrow,.section.art-industries>.section-head>h2{grid-column:1/-1}
+  .section.art-industries>.section-head>p{grid-column:1;grid-row:3;margin-top:8px;font-size:15px;line-height:1.55}
+  .section.art-industries>.section-head::after{grid-column:2;grid-row:3;width:88px;max-width:100%;margin:0;align-self:center;justify-self:end}
+  .industry-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .industry-list a,.industry-list.large a{padding:10px 9px;min-height:72px;font-size:13px;line-height:1.38;gap:8px}
+  .industry-list a>svg:first-child{width:21px;height:21px;padding:6px;border-radius:7px}
+  .page-hero.art-industries>.wrap::after{display:none}
+}
+@media(max-width:350px){
+  .industry-list{grid-template-columns:minmax(0,1fr)}
+  .industry-list a,.industry-list.large a{font-size:14px;min-height:56px}
+  .section.art-industries>.section-head{grid-template-columns:minmax(0,1fr) 65px;column-gap:8px}
+  .section.art-industries>.section-head::after{width:65px}
+}
+@media(prefers-reduced-motion:reduce){.industry-list a{transition:none}}
