@@ -356,3 +356,27 @@ html.drawer-open,html.drawer-open body{overflow:hidden;overscroll-behavior:none}
   .section.art-industries>.section-head::after{width:65px}
 }
 @media(prefers-reduced-motion:reduce){.industry-list a{transition:none}}
+
+/* Neutral contact groups and compact responsive drawer. */
+.site-footer .footer-connect{display:flex;flex-wrap:wrap;gap:20px 28px;align-items:flex-start}
+.site-footer .footer-action-group{min-width:0;flex:0 0 auto}
+.site-footer .footer-action-group h3{color:#4b5563;font-weight:600;margin-bottom:8px}
+.footer-action-row,.drawer-quick-actions{display:flex;align-items:center;gap:8px}
+.site-footer .footer-action-row a,.drawer-quick-actions a{display:inline-grid;place-items:center;box-sizing:border-box;width:44px;height:44px;flex:0 0 44px;min-width:44px;min-height:44px;padding:0;background:transparent;color:#667085;border:1px solid transparent;border-radius:8px;transition:background .15s ease,color .15s ease}
+.site-footer .footer-action-row a svg,.drawer-quick-actions a svg{width:22px;height:22px;color:currentColor;flex:none}
+.site-footer .footer-action-row a:hover,.drawer-quick-actions a:hover{background:#e9edf2;color:#344054}
+.site-footer .footer-action-row a:focus-visible,.drawer-quick-actions a:focus-visible{outline:2px solid #667085;outline-offset:2px}
+.mobile-drawer{width:min(320px,84vw);border-radius:14px 0 0 14px}
+[dir=rtl] .mobile-drawer{border-radius:0 14px 14px 0}
+.drawer-head{padding:14px;gap:8px}
+.drawer-head .brand img{width:154px;max-width:100%}
+.drawer-body{padding:12px 10px}
+.drawer-links{gap:3px}
+.drawer-links a{min-height:48px;padding:9px 10px;gap:10px;font-size:15px}
+.drawer-bottom{background:#fff;padding:12px 14px max(12px,env(safe-area-inset-bottom));border-top:1px solid #e5e7eb}
+.drawer-bottom>p{color:#667085;font-size:11px;margin:0 0 5px}
+.drawer-quick-actions{gap:8px}
+.drawer-bottom small{margin-top:6px;font-size:10px;color:#667085}
+@media(max-width:850px){.site-footer .footer-connect{gap:16px 28px}.site-footer .footer-action-group{flex:1 1 90px}}
+@media(max-width:350px){.mobile-drawer{width:min(300px,calc(100vw - 32px))}.drawer-head .brand img{width:128px}.drawer-links a{font-size:14px;gap:8px}}
+@media(prefers-reduced-motion:reduce){.site-footer .footer-action-row a,.drawer-quick-actions a{transition:none}}
